@@ -1,5 +1,6 @@
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.io.*;
 
 
 public class EchoServer{
@@ -13,7 +14,19 @@ public class EchoServer{
             Socket soc = ss.accept();//blocking call, the server socet will wait for a incoming cilient connections and then when 
                                      //it gets a conncetion it will return a socket object, and that object will capture it in a 
                                      //Socket reference.
-            System.out.println("Connection Established");  // if the previous method from the ServerSocket class(.accept) works, then say Connection Established
+            System.out.println("Connection Established"); // if the previous method from the ServerSocket class(.accept) works, then say Connection Established
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(soc.getInputStream()));
+
+            String str = in.readLine(); 
+
+            PrintWriter out = new PrintWriter(soc.getOutputStream(), true); //send the same string back to the client
+
+            out.println("Server Says '" + str + "'");
+
+            in.close();
+            out.close();
+            soc.close();
 
         }
         
@@ -24,6 +37,6 @@ public class EchoServer{
 
         }
 
-        //this a test
+        //this a test       
     }
 }
