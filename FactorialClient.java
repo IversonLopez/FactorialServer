@@ -16,9 +16,9 @@ public class FactorialClient {
 
             //reading the data from the server 
 
-            BufferedReader in2 = new BufferedReader(new InputStreamReader(soc.getInputStream())); //reading data so you use inputStream
+            BufferedReader in2 = new BufferedReader(new InputStreamReader(soc.getInputStream())); //reading data so use InputStream, reading "The Factorial of (num) is "
              //don't forget the readLine, because you're using a BufferedReader
-            System.out.println(in2.readLine());
+            System.out.println(in2.readLine()); // Prints out to the actual console
 
 
             soc.close();

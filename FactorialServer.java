@@ -14,7 +14,6 @@ public class FactorialServer {
             int number = Integer.parseInt(in.readLine()); //change to an int (conversion), integer wrapper
             PrintWriter out = new PrintWriter(soc.getOutputStream(), true); //output back to the client the actual factorial, not the number(getting ready to output it)
             out.println("Factorial of " + number + " is: " + factorial(number)); //officially sends the number back to the client 
-            //check this line, i think only the factorialserver needs to print out that line of the final message******
             in.close();
             soc.close();
         }
